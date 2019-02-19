@@ -68,8 +68,7 @@ output $\boldy \in \{C_k\}_{k=1}^c$.\\
 The problem set has three problems:
 \begin{enumerate}
 \item In the first problem, you will explore the properties of
-  Bayesian estimation methods for the Bernoulli model as well as the
-  special case of Bayesian linear regression with a simple prior.
+  Bayesian estimation methods for the Bernoulli model.
 %
 \item In the second problem, you will dive into matrix algebra and the
   methods behind generative multiclass classifications. You will
@@ -86,31 +85,40 @@ The problem set has three problems:
 
   This question helps to build your understanding of the
   maximum-likelihood estimation (MLE) vs. maximum a posterior
-  estimator (MAP) and posterior predictive estimator, first in the
-  Beta-Bernoulli model and then in the linear regression setting.\\
+  estimator (MAP) vs. a posterior predictive.\\
 
   % FDV: Make sure that the lecture reference is accurate below.
-First consider the Beta-Bernoulli model (and see lecture 5.)
+  First consider the Beta-Bernoulli model (and see lecture 5.)  Let
+  $\theta$ be the probability that a coin comes up heads.  Consider a
+  prior $\theta\sim Beta(2,2)$, and data $D= 0, 0, 1, 1, 0, 0, 0, 0,
+  1, 0, 1, 1, 1, 0, 1, 0$.
+
 %
 \begin{enumerate}
-\item Write down the expressions for the MLE, MAP and posterior predictive
-distributions, and for
-a prior $\theta\sim Beta(2,2)$ on the
-parameter of the Bernoulli,
-and  with data $D= 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1,$
-$1, 0, 1, 0$, plot
-the three different
-estimates after each additional
-sample.
-%
-\item Plot the posterior distribution (prior for 0 examples) on $\theta$ after 0, 4, 8, 12 and 16
-examples. (Using whatever tools you like.)
+
+\item 
+We are interested in seeing how $\theta$, the probability that a coin comes up heads, changes as we get more data.
+ Write down the expressions for: 
+ \begin{enumerate}
+     \item the maximum likelihood estimate of $\theta$
+     \item the MAP estimate of $\theta$
+     \item the posterior predictive estimate of $\theta$ based on $P(X = 1 | D)$, where $X$ is a new flip and $D$ is all the data you currently have.
+ \end{enumerate} 
+ Notice in the case of the Beta-Bernoulli model, the posterior predictive can also be represented as a point estimate of $\theta$, which is not always the case! 
+ 
+ Plot each of three different estimates after each
+  additional sample.  You can consider making a single plot with
+  flips on the x-axis and three lines showing your guess for the
+  probability of heads after each flip for each estimator.
+
 %
 \item Interpret the differences you see between the three different
 estimators.
+% 
+\item Plot the posterior distribution (prior for 0 examples) on $\theta$ after 0, 4, 8, 12 and 16 examples. (Using whatever tools you like.)  You may make separate plots for each or overlay all the plots to visualize how the posterior on $\theta$ changes.
 %
-% FDV: The two problems below are new and will need solutions written out.
 
+% FDV: The two problems below are new and will need solutions written out.
 \item Compute the marginal likelihood of the training data $p(D)$.
   Hint: Notice that the required integral looks like an unnormalized
   Beta distribution, and take advantage of the fact that integrating
@@ -118,24 +126,17 @@ estimators.
   %
 \item Now consider an alternate model in which our prior over the coin
   is that it likely comes up heads or likely comes up tails, that is
-  $\theta \sim Beta(10,1) + Beta(1,10)$.  Compute the marginal
+  $\theta \sim \frac{1}{2}( Beta(10,1) + Beta(1,10) )$.  Compute the marginal
   likelihood for this model.  Which of the two models has a higher
   marginal likelihood?
-
 \end{enumerate}
-
  \end{problem}
-
 \subsection*{Solution}
-
-
 % FDV: The problem below is the same as last year, just check for clarity.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{problem}[Return of matrix calculus, 10pts]
-
   Consider now a generative $c$-class model.  We adopt class prior
   $p(\boldy = C_k; \bpi) = \pi_k$ for all $k \in \{1, \ldots, c\}$
 (where $\pi_k$ is a parameter of the prior).
@@ -161,7 +162,6 @@ Lagrange multipliers below, give the
     to solve to obtain this estimator. Double-check your answer: the final
     result should be very intuitive!
 \end{enumerate}
-
     For the remaining questions, let the
     class-conditional probabilities be Gaussian distributions with
 the same covariance matrix
@@ -183,22 +183,16 @@ Since you are differentiating with respect to a
 %
   \item[6.] Derive the maximum likelihood estimator of the covariance matrix.
 \end{enumerate}
-
 \paragraph{Hint: Lagrange Multipliers.} Lagrange Multipliers are a method for
 optimizing a function $f$ with respect to an
 equality constraint, i.e.
 \[\min_{\boldx} f(\boldx)\ \text{s.t.}\ g(\boldx) = 0.\]
-
 This can be turned into an unconstrained problem by introducing a
 Lagrange multiplier $\lambda$ and constructing the Lagrangian function,
 \[L(\boldx, \lambda) =  f(\boldx) + \lambda g(\boldx).\]
-
 It can be shown that it is a necessary condition that the optimum
 is a critical point of this new function. We can find this point by solving two equations:
-
 \[\frac{\partial L(\boldx, \lambda)}{\partial  \boldx} = 0  \ \ \text{and}\  \  \frac{\partial L(\boldx, \lambda)}{\partial \lambda} = 0 \]
-
-
 \paragraph{Cookbook formulas.} Here are some formulas you might want to consider
 using to compute difficult gradients. You can use them  in the homework
 without proof. If you are looking to hone your matrix calculus skills, try to
@@ -211,20 +205,14 @@ $\boldX^{-\top} := (\boldX^{\top})^{-1}$
   & \frac{\partial \ln | \det (\boldX) |}{\partial \boldX} = \boldX^{-\top}
  \end{align*}
  \end{problem}
-
 \subsection*{Solution}
-
 \newpage
-
-
 \section*{3. Classifying Stars [15pts]}
-
 You're tasked with classifying three different kinds of stars, based
 on their magnitudes and temperatures.  The figure below is a plot of
 the data, adapted from
 \url{http://astrosci.scimuze.com/stellar_data.htm} and available as
 \verb|hr.csv|, which you will find in the Github repository.
-
 The file has three columns: type, magnitude, and temperature. The
 first few lines look like this:
 \begin{csv}
@@ -234,16 +222,12 @@ Dwarf,-4.1,-0.31
 Dwarf,-1.1,-0.16
 ...
 \end{csv}
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{star}
 \caption{Magnitudes and temperatures of dwarf, giant, and supergiant stars. Adapted from \url{http://astrosci.scimuze.com/stellar_data.htm}}
 \end{figure}
-
 \begin{problem}[Classifying Stars, 15pts]
-
-
 In this problem, you will code up two classifiers for this task:
 \begin{itemize}
 \item The three-class generalization of logistic regression, also
@@ -253,7 +237,6 @@ In this problem, you will code up two classifiers for this task:
   regularization strength $\lambda$. See the third practice problem in
   the section 3 notes for more information.
 % FDV: Make sure the reference above is accurate
-
 \item A generative classifier with Gaussian class-conditional
   densities, as in Problem~2. In particular, make two implementations:
   one with a shared covariance matrix across all of the classes, and
@@ -261,7 +244,6 @@ In this problem, you will code up two classifiers for this task:
   the staff implementation can switch between these two with just a
   few lines of code.)
 \end{itemize}
-
 Implementation notes: you may use anything in \texttt{numpy} or
 \texttt{scipy}, except for \texttt{scipy.optimize}.  The controller
 file is \texttt{problem3.py}, in which you will specify
@@ -276,12 +258,10 @@ high-level interface should be, so you should completely remove the
 given \texttt{predict()} implementations and replace them with your
 implementations.  You will also need to modify the hyperparameter
 values.
-
 \begin{enumerate}
 \item Plot the decision boundaries with the \texttt{visualize()}
   function. Include these plots in your assignment PDF. What are the similarities and differences between the
   classifiers?  What explains the differences?
-
 \item For logistic regression, plot negative log-likelihood loss with
   iterations on the x-axis and loss on the y-axis for several
   configurations of hyperparameters. Note which configuration yields
@@ -290,30 +270,22 @@ values.
   does altering these hyperparameters affect convergence? Focus both
   on the ability to converge and the rate at which it converges (a
   qualitative description is sufficient).
-
 \item For both Gaussian generative models, report negative log
   likelihood. In the separate covariance matrix case, be sure to use
   the covariance matrix that matches the true class of each data
   point.
-
 \item Finally, consider a star with magnitude 6 and temperature 2.
   To what class do each of the classifiers assign this star?  Do the
   classifiers give any indication as to whether or not you should
   trust them?
-
 \end{enumerate}
-
 \end{problem}
-
 \subsection*{Solution}
-
 \newpage
-
 \begin{itemize}
     \item Name:
     \item Email:
     \item Collaborators:
     \item Approximately how long did this homework take you to complete (in hours):
 \end{itemize}
-
 \end{document}
