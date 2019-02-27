@@ -3,7 +3,7 @@
 % You don't need to change these.
 \course{CS181-S19}
 \assignment{Assignment \#2}
-\duedate{11:59pm Mar 1st, 2019} % FDV: Adjust to correct date
+\duedate{11:59pm Mar 1st, 2019}
 
 \usepackage[OT1]{fontenc}
 \usepackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
@@ -39,9 +39,6 @@
 \end{center}
 }
 \subsection*{Introduction}
-
-% FDV: Make sure that the readings are relevant to the problems and
-% that the descriptions match.
 
 This homework is about Bayesian methods and multiclass
 classification. In lecture we have primarily focused on binary
@@ -87,7 +84,6 @@ The problem set has three problems:
   maximum-likelihood estimation (MLE) vs. maximum a posterior
   estimator (MAP) vs. a posterior predictive.\\
 
-  % FDV: Make sure that the lecture reference is accurate below.
   First consider the Beta-Bernoulli model (and see lecture 5.)  Let
   $\theta$ be the probability that a coin comes up heads.  Consider a
   prior $\theta\sim Beta(2,2)$, and data $D= 0, 0, 1, 1, 0, 0, 0, 0,
@@ -118,7 +114,6 @@ estimators.
 \item Plot the posterior distribution (prior for 0 examples) on $\theta$ after 0, 4, 8, 12 and 16 examples. (Using whatever tools you like.)  You may make separate plots for each or overlay all the plots to visualize how the posterior on $\theta$ changes.
 %
 
-% FDV: The two problems below are new and will need solutions written out.
 \item Compute the marginal likelihood of the training data $p(D)$.
   Hint: Notice that the required integral looks like an unnormalized
   Beta distribution, and take advantage of the fact that integrating
@@ -132,7 +127,7 @@ estimators.
 \end{enumerate}
  \end{problem}
 \subsection*{Solution}
-% FDV: The problem below is the same as last year, just check for clarity.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Problem 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -236,7 +231,7 @@ In this problem, you will code up two classifiers for this task:
   will need to find good values for the learning rate $\eta$ and
   regularization strength $\lambda$. See the third practice problem in
   the section 3 notes for more information.
-% FDV: Make sure the reference above is accurate
+
 \item A generative classifier with Gaussian class-conditional
   densities, as in Problem~2. In particular, make two implementations:
   one with a shared covariance matrix across all of the classes, and
