@@ -23,7 +23,7 @@
 
 \definecolor{verbgray}{gray}{0.9}
 
-\lstnewenvironment{csv}{%
+\lstnewenvironment{csv}{
   \lstset{backgroundcolor=\color{verbgray},
   frame=single,
   framerule=0pt,
@@ -84,7 +84,7 @@ runs on a toy data set.
   Also recall the definition of min-distance, max-distance,
   centroid-distance, and average-distance between two clusters (where $\bmu_{G}$
 is the center of a cluster $G$):
-%
+
 \begin{eqnarray*}
     d_{\text{min}}(G, G') &=& \min_{\boldx  \in G, \boldx' \in G'} d(\boldx, \boldx')\\
     d_{\text{max}}(G, G') &=& \max_{\boldx  \in G, \boldx' \in G'} d(\boldx, \boldx')\\
@@ -108,14 +108,14 @@ is the center of a cluster $G$):
 
 \newpage 
 
-\begin{problem}[Expectation-Maximization for Poisson Mixture Models, 7pts]
+\begin{problem}[Expectation-Maximization for Poisson Mixture Models, 15pts]
 
 In this problem we will explore expectation-maximization for the
-Poisson Mixture model.  Each observation $\boldx_n$ is a vector in the
-non-negative integers $\mathbb{Z}^{*}$.  We posit that each
+Poisson Mixture model.  Each observation $\boldx_n$ is a
+non-negative integer $\mathbb{Z}^{*}$.  We posit that each
 observation comes from \emph{one} mixture component.  For this
 problem, we will assume there are $K$~components. Each component $k
-\in \{1, \ldots, K\}$ will be associated with a mean vector $\lambda_k
+\in \{1, \ldots, K\}$ will be associated with a mean $\lambda_k
 \in R^{+}$.  Finally let the (unknown) overall mixing proportion of
 the components be~$\btheta \in [0,1]^K$, where~${\sum_{k=1}^K
   \btheta_k=1}$.
